@@ -1,0 +1,155 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  height: 100%;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotateX(0deg) rotateY(0deg);
+  }
+  100% {
+    transform: rotateX(360deg) rotateY(360deg);
+  }
+}
+
+.cube {
+  width: 4rem;
+  height: 4rem;
+  position: relative;
+  transform-style: preserve-3d;
+  animation: rotate 5.5s infinite linear;
+}
+
+.face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #4f46e5, #9333ea);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.3);
+}
+
+.front { transform: translateZ(2rem); }
+.back { transform: rotateY(180deg) translateZ(2rem); }
+.left { transform: rotateY(-90deg) translateZ(2rem); }
+.right { transform: rotateY(90deg) translateZ(2rem); }
+.top { transform: rotateX(90deg) translateZ(2rem); }
+.bottom { transform: rotateX(-90deg) translateZ(2rem); }
+
+
+@layer base {
+  :root {
+   /* Base colors */
+   --background: 0 0% 100%;
+   --foreground: 247 62% 23%; /* Based on #291461 */
+   
+   /* Card styles */
+   --card: 0 0% 100%;
+   --card-foreground: 247 62% 23%;
+   
+   /* Popover styles */
+   --popover: 0 0% 100%;
+   --popover-foreground: 247 62% 23%;
+   
+   /* Primary colors - Using blue #291461 */
+   --primary: 247 62% 23%;
+   --primary-foreground: 0 0% 100%;
+   
+   /* Secondary colors - Using a lighter version of blue */
+   --secondary: 247 62% 95%;
+   --secondary-foreground: 247 62% 23%;
+   
+   /* Muted colors */
+   --muted: 247 62% 95%;
+   --muted-foreground: 247 62% 45%;
+   
+   /* Accent colors - Using pink #FD366E */
+   --accent: 343 98% 60%;
+   --accent-foreground: 0 0% 100%;
+   
+   /* Destructive colors - Using magenta #B22166 */
+   --destructive: 333 69% 41%;
+   --destructive-foreground: 0 0% 100%;
+   
+   /* Border and input colors */
+   --border: 247 62% 90%;
+   --input: 247 62% 90%;
+   --ring: 343 98% 60%;
+   
+   /* Border radius */
+   --radius: 0.5rem;
+   
+   /* Chart colors */
+   --chart-1: 247 62% 23%; /* Blue */
+   --chart-2: 343 98% 60%; /* Pink */
+   --chart-3: 333 69% 41%; /* Magenta */
+   --chart-4: 247 62% 40%; /* Lighter blue */
+   --chart-5: 343 98% 75%; /* Lighter pink */
+   
+    /* Sidebar styles */
+    --sidebar-background: 343 98% 98%; /* Light pink background for softness */
+    --sidebar-foreground: 247 62% 23%; /* Blue #291461 for text */
+    --sidebar-primary: 343 98% 80%; /* Lighter Pink */
+    --sidebar-primary-foreground: 0 0% 100%; /* White text on primary elements */
+    --sidebar-accent: 333 69% 70%; /* Lighter Magenta */
+    --sidebar-accent-foreground: 0 0% 100%; /* White text on accent elements */
+    --sidebar-border: 343 98% 90%; /* Light pink border */
+    --sidebar-ring: 247 62% 23%; /* Blue ring for focus states */
+
+    /* Optional: Add these custom properties for gradient effects */
+    --sidebar-gradient-start: 343 98% 98%; /* Light pink */
+    --sidebar-gradient-end: 247 62% 98%; /* Light blue */
+    --sidebar-background: linear-gradient(135deg, 
+      hsl(var(--sidebar-gradient-start)) 0%,
+      hsl(var(--sidebar-gradient-end)) 100%
+    );
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 48%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
