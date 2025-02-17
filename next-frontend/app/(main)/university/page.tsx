@@ -32,13 +32,13 @@ const AssignmentsPage = () => {
   const handleCardClick = (assignment: any) => {
     console.log("assignment",assignment)
       // Save the university data in a cookie
-  document.cookie = `selectedUniversity=${JSON.stringify({
-    id: assignment.university._id,
-    universityName: assignment.university.universityName,
-    universityLogo: assignment.university.universityLogo,
-    universityShortName: assignment.university.universityShortName,
-    vertical: assignment.university.vertical
-  })}; path=/`;
+      document.cookie = `selectedUniversity=${JSON.stringify({
+        id: assignment.university._id,
+        universityName: assignment.university.universityName,
+        universityLogo: assignment.university.universityLogo,
+        universityShortName: assignment.university.universityShortName,
+        vertical: assignment.university.vertical
+      })}; path=/; max-age=3600`; 
     setSelectedUniversity({
       id: assignment.university._id,
       universityName: assignment.university.universityName,

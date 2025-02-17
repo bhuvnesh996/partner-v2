@@ -1,3 +1,4 @@
+import { access } from "fs";
 import { NextRequest, NextResponse } from "next/server";
 
 const routes = {
@@ -37,18 +38,18 @@ const routes = {
     ]
   }
 };
-
 export default async function middleware(req: NextRequest) {
   const path = req.nextUrl.pathname;
   const accessToken = req.cookies.get("accessToken")?.value;
   const selectedUniversity = req.cookies.get("selectedUniversity")?.value;
-  
-  // Parse selected university data if it exists
+  console.log("fix ",accessToken)
   let universityData = null;
-  try {
-    universityData = selectedUniversity ? JSON.parse(selectedUniversity) : null;
-  } catch (e) {
-    console.error("Error parsing selectedUniversity cookie:", e);
+  if (selectedUniversity) {
+    try {
+      universityData = JSON.parse(selectedUniversity);
+    } catch (e) {
+      console.error("Error parsing selectedUniversity cookie:", e);
+    }
   }
 
   // Handle public routes
@@ -91,6 +92,7 @@ export default async function middleware(req: NextRequest) {
 
   return NextResponse.next();
 }
+
 
 export const config = {
   matcher: [
